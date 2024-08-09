@@ -66,4 +66,7 @@
     <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\StoredProcedures\Usp_Users_GetAll.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
 </Project>
