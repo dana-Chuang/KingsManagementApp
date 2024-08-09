@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[CompanyCode]
 (   
 	[Id] INT IDENTITY(1,1) NOT NULL,
-	[CompanyCode] VARCHAR(5) NULL, 
+	[Code] VARCHAR(5) NULL, 
     [Domain] VARCHAR(10) NULL,
     [Created] DATETIME NOT NULL, 
     [CreatedBy] CHAR(25) NOT NULL, 
