@@ -1,0 +1,6 @@
+@KingsManagementApp_HostAddress = http://localhost:5174
+
+GET {{KingsManagementApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
