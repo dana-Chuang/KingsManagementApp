@@ -1,4 +1,6 @@
-﻿public interface IUsersRepository
-{
+﻿using DataLayer;
 
+public interface IUsersRepository
+{
+    List<Users> GetAll();
 }
