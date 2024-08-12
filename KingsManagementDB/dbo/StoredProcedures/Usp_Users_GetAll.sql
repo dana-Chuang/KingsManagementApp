@@ -2,7 +2,7 @@
 AS
 BEGIN
 	SELECT Id,
-		CompanyCodeId,
+		CompanyCode,
 		EmployeeNo,
 		FirstName,
 		LastName,

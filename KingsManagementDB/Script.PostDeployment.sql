@@ -11,6 +11,6 @@ Post-Deployment Script Template
 */
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Users])
 BEGIN
-    INSERT INTO [dbo].[Users] (CompanyCodeId, EmployeeNo, FirstName, LastName, Status,Password,Created, CreatedBy)
-    VALUES (0,'TestUser1','DefaultFName','DefaultLName',0,'Password',DateTime.Now,'Admin');
+    INSERT INTO [dbo].[Users] (CompanyCode, EmployeeNo, FirstName, LastName, Status,Password,Created, CreatedBy)
+    VALUES ('0','TestUser1','DefaultFName','DefaultLName',0,'Password',GETDATE(),'Admin');
 END
