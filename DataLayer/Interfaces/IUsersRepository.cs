@@ -1,6 +1,8 @@
 ﻿using DataLayer;
+using DataLayer.Models;
 
 public interface IUsersRepository
 {
-    List<Users> GetAll();
+    Task<IEnumerable<UsersModel>> GetAll();
+    void updatePassword(int id, string newpassword);
 }
