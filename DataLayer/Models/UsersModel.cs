@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    public class UsersModel
+    public class UsersModel: BaseModel
     {
-        public int Id { get; set; }
         [Display(Name = "Company Code")]
         public string? CompanyCode { get; set; }
         [Display(Name = "Employee Number")]
@@ -18,7 +17,9 @@ namespace DataLayer.Models
         public string? FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string? LastName { get; set; }
+        [Display(Name = "Status")]
         public int Status { get; set; }
+        [Display(Name = "Password")]
         public string? Password { get; set; }
     }
 }
