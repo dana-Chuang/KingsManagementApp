@@ -6,9 +6,9 @@
     [FirstName] VARCHAR(25) NULL, 
     [LastName] VARCHAR(25) NULL, 
     [Status] INT NOT NULL, 
-    [Created] DATETIME NOT NULL, 
+    [CreatedOn] DATETIME NOT NULL, 
     [CreatedBy] CHAR(25) NOT NULL, 
-    [Updated] DATETIME NULL, 
+    [UpdatedOn] DATETIME NULL, 
     [UpdatedBy] CHAR(25) NULL,
     PRIMARY KEY CLUSTERED
     (
