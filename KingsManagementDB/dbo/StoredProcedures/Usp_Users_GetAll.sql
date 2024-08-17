@@ -7,6 +7,10 @@ BEGIN
 		FirstName,
 		LastName,
 		Status,
-		Password
+		Password,
+		CreatedOn,
+		CreatedBy,
+		UpdatedOn,
+		UpdatedBy
 	FROM [dbo].[Users];
 END
