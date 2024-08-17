@@ -12,7 +12,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<DbContext, DbContext>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IUsersRepository,UsersRepository>();
 

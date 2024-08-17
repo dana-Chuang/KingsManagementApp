@@ -17,9 +17,9 @@ namespace KingsManagementApp.Controllers
             return _usersRepository.GetAll();
         }
 
-        public void updateUserPassword(int id, string newpassword)
+        public void updateUserPassword(int id, string newpassword, string updatedBy)
         {
-            _usersRepository.updatePassword(id,newpassword);
+            _usersRepository.updatePassword(id,newpassword,updatedBy);
         }
     }
 }

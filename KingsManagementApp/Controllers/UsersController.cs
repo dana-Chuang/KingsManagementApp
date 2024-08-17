@@ -27,9 +27,9 @@ namespace KingsManagementApp.Controllers
         }
 
         [HttpPost(Name = "UpdatePassword")]
-        public IActionResult UpdatePassword(int id, string password)
+        public IActionResult UpdatePassword(int id, string password, string updatedBy)
         {
-            _userService.updateUserPassword(id, password);
+            _userService.updateUserPassword(id, password, updatedBy);
             return Ok();
         }
 

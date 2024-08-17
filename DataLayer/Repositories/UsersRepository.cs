@@ -20,10 +20,13 @@ public class UsersRepository : IUsersRepository
         return await _connection.QueryAsync<UsersModel>("Usp_Users_GetAll", commandType: CommandType.StoredProcedure);
     }
 
-    public void updatePassword(int id, string newPassword)
+    public async void updatePassword(int id, string newPassword, string updatedBy)
     {
+        var parameters = new DynamicParameters();
+        parameters.Add("Id", id);
+        parameters.Add("NewPassword", newPassword);
+        parameters.Add("UpdatedBy", updatedBy);
 
-        var sql = $@"UPDATE [Password] = @newPassword
-                      FROM [Users] WHERE [Id] = @id";
+        await _connection.QueryAsync<UsersModel>("Usp_Users_UpdatePassword", parameters, commandType: CommandType.StoredProcedure);
     }
 }
