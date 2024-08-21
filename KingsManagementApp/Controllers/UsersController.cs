@@ -1,6 +1,7 @@
 using DataLayer.Models;
 using KingsManagementApp.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace KingsManagementApp.Controllers
 {
@@ -27,9 +28,13 @@ namespace KingsManagementApp.Controllers
         }
 
         [HttpPost(Name = "UpdatePassword")]
-        public IActionResult UpdatePassword(int id, string password, string updatedBy)
+        public IActionResult UpdatePassword(int id, string newPassword, string updatedBy)
         {
-            _userService.updateUserPassword(id, password, updatedBy);
+            if (_userService.isPasswordSame(id, newPassword))
+            {
+                throw new ValidationException("New Password should not be same as the old one");
+            }
+            _userService.updateUserPassword(id, newPassword, updatedBy);
             return Ok();
         }
 

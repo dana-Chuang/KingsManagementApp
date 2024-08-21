@@ -20,6 +20,13 @@ public class UsersRepository : IUsersRepository
         return await _connection.QueryAsync<UsersModel>("Usp_Users_GetAll", commandType: CommandType.StoredProcedure);
     }
 
+    public async Task<IEnumerable<String>> getPasswordBy(int id)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("Id", id);
+        return await _connection.QueryAsync<String>("Usp_Users_GetPasswordById", parameters, commandType: CommandType.StoredProcedure);
+    }
+
     public async void updatePassword(int id, string newPassword, string updatedBy)
     {
         var parameters = new DynamicParameters();
