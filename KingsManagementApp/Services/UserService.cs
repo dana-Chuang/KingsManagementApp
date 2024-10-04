@@ -12,7 +12,7 @@ namespace KingsManagementApp.Controllers
             _usersRepository = usersRepository;
         }
 
-        public Task<IEnumerable<UsersModel>> GetAllUsers()
+        public List<UsersModel> GetAllUsers()
         {
             return _usersRepository.GetAll();
         }

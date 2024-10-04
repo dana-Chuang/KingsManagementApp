@@ -15,16 +15,16 @@ public class UsersRepository : IUsersRepository
         _connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
     }
 
-    public async Task<IEnumerable<UsersModel>> GetAll()
+    public List<UsersModel> GetAll()
     {
-        return await _connection.QueryAsync<UsersModel>("Usp_Users_GetAll", commandType: CommandType.StoredProcedure);
+        return _connection.Query<UsersModel>("Usp_Users_GetAll", commandType: CommandType.StoredProcedure).ToList();
     }
 
-    public async Task<IEnumerable<String>> getPasswordBy(int id)
+    public IEnumerable<String> getPasswordBy(int id)
     {
         var parameters = new DynamicParameters();
         parameters.Add("Id", id);
-        return await _connection.QueryAsync<String>("Usp_Users_GetPasswordById", parameters, commandType: CommandType.StoredProcedure);
+        return _connection.Query<String>("Usp_Users_GetPasswordById", parameters, commandType: CommandType.StoredProcedure);
     }
 
     public async void updatePassword(int id, string newPassword, string updatedBy)

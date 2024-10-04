@@ -20,9 +20,9 @@ namespace KingsManagementApp.Controllers
         }
 
         [HttpGet(Name = "GetAllUsers")]
-        public async Task<IEnumerable<UsersModel>> GetAllUsers()
+        public List<UsersModel> GetAllUsers()
         {
-            var allUserLists = await _userService.GetAllUsers();
+            var allUserLists = _userService.GetAllUsers();
             return allUserLists;
 
         }
