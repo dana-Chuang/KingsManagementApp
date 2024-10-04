@@ -27,14 +27,17 @@ namespace KingsManagementApp.Controllers
 
         }
 
-        [HttpPost(Name = "UpdatePassword")]
-        public IActionResult UpdatePassword(int id, string newPassword, string updatedBy)
+        [HttpPut(Name = "UpdatePassword")]
+        public IActionResult UpdatePassword([FromBody] UpdatePasswordRequest request)
         {
-            if (_userService.isPasswordSame(id, newPassword))
+/*            var id = 1;
+            var newPassword = "testing";
+            var updatedBy ="tDana";*/
+            if (_userService.isPasswordSame(request.Id, request.NewPassword))
             {
                 throw new ValidationException("New Password should not be same as the old one");
             }
-            _userService.updateUserPassword(id, newPassword, updatedBy);
+            _userService.updateUserPassword(request.Id, request.NewPassword, request.UpdatedBy);
             return Ok();
         }
 
