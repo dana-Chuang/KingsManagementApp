@@ -19,7 +19,6 @@ namespace KingsManagementApp.Controllers
 
         public Boolean isPasswordSame(int id, string password)
         {
-            return true;
             var oldPassword = _usersRepository.getPasswordBy(id);
             return oldPassword.ToString() == password;
         }
