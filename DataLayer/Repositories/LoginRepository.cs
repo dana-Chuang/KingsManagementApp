@@ -15,25 +15,11 @@ public class LoginRepository : ILoginRepository
         _configuration = configuration;
         _connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
     }
-    public List<UsersModel> GetAll()
-    {
-        return _connection.Query<UsersModel>("Usp_Users_GetAll", commandType: CommandType.StoredProcedure).ToList();
-    }
 
-    public IEnumerable<String> getPasswordBy(int id)
+    public IEnumerable<String> GetPassword(string username)
     {
         var parameters = new DynamicParameters();
-        parameters.Add("Id", id);
-        return _connection.Query<String>("Usp_Users_GetPasswordById", parameters, commandType: CommandType.StoredProcedure);
-    }
-
-    public void updatePassword(int id, string newPassword, string updatedBy)
-    {
-        var parameters = new DynamicParameters();
-        parameters.Add("Id", id);
-        parameters.Add("NewPassword", newPassword);
-        parameters.Add("UpdatedBy", updatedBy);
-
-        _connection.Query<UsersModel>("Usp_Users_UpdatePassword", parameters, commandType: CommandType.StoredProcedure);
+        parameters.Add("Username", username);
+        return _connection.Query<String>("Usp_Login_GetPasswordByUsername", parameters, commandType: CommandType.StoredProcedure);
     }
 }

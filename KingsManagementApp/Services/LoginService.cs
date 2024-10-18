@@ -14,6 +14,7 @@ namespace KingsManagementApp.Controllers
 
         public void Login(LoginRequest request)
         {
+            var pwFromDB = _loginRepository.GetPassword(request.Username);
             throw new NotImplementedException();
         }
     }
