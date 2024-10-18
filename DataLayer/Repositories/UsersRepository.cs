@@ -27,6 +27,15 @@ public class UsersRepository : IUsersRepository
         return _connection.Query<String>("Usp_Users_GetPasswordById", parameters, commandType: CommandType.StoredProcedure);
     }
 
+    public string getPasswordBy(string email)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("Email", email);
+        return _connection.QuerySingleOrDefault<string>("Usp_Users_GetPasswordByEmail",
+                                                        parameters,
+                                                        commandType: CommandType.StoredProcedure);
+    }
+
     public void updatePassword(int id, string newPassword, string updatedBy)
     {
         var parameters = new DynamicParameters();

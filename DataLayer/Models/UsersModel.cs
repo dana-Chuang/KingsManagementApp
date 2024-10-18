@@ -19,6 +19,10 @@ namespace DataLayer.Models
         public string? LastName { get; set; }
         [Display(Name = "Status")]
         public int Status { get; set; }
+        [Display(Name = "Email")]
+        public string? Email { get; set; }
+        [Display(Name = "Is Admin")]
+        public int IsAdmin { get; set; }
         [Display(Name = "Password")]
         public string? Password { get; set; }
     }

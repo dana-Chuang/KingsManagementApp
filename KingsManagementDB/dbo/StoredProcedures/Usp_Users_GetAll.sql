@@ -7,6 +7,8 @@ BEGIN
 		FirstName,
 		LastName,
 		Status,
+		Email,
+		IsAdmin,
 		Password,
 		CreatedOn,
 		CreatedBy,

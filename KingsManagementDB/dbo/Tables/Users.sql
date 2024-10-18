@@ -6,6 +6,8 @@
     [FirstName] VARCHAR(25) NULL, 
     [LastName] VARCHAR(25) NULL, 
     [Status] INT NOT NULL, 
+    [Email] VARCHAR(25) NOT NULL,
+    [IsAdmin] INT NOT NULL,
     [Password] VARCHAR(20) NULL,
     [CreatedOn] DATETIME NOT NULL, 
     [CreatedBy] CHAR(25) NOT NULL, 

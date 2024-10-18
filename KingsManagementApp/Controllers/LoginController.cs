@@ -1,7 +1,6 @@
 ﻿using DataLayer.Models;
 using DataLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 namespace KingsManagementApp.Controllers
 {
@@ -21,8 +20,17 @@ namespace KingsManagementApp.Controllers
         [HttpPost(Name = "Login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
-            _loginService.Login(request);
-            return Ok();
+            var isLoginValid = _loginService.Login(request);
+            if (isLoginValid)
+            {
+                _logger.LogInformation("Login successful for user: {Email}", request.Email);
+                return Ok();
+            }
+            else
+            {
+                _logger.LogWarning("Login failed for user: {Email}", request.Email);
+                return BadRequest();
+            }
         }
     }
 }

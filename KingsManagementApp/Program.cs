@@ -23,7 +23,6 @@ builder.Services.AddTransient<ILoginService, LoginService>();
 
 //Repositories
 builder.Services.AddTransient<IUsersRepository, UsersRepository>();
-builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 
 var app = builder.Build();
 
