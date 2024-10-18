@@ -1,6 +1,6 @@
 ﻿using DataLayer.Models;
 
-namespace KingsManagementApp.Services
+namespace DataLayer.Interfaces
 {
     public interface IUserService
     {

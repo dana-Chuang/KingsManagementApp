@@ -1,4 +1,4 @@
-﻿namespace KingsManagementApp.Controllers
+﻿namespace DataLayer.Models
 {
     public class LoginRequest
     {

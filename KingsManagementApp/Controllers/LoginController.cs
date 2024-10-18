@@ -1,5 +1,5 @@
 ﻿using DataLayer.Models;
-using KingsManagementApp.Services;
+using DataLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,15 +10,18 @@ namespace KingsManagementApp.Controllers
     public class LoginController: Controller
     {
         private readonly ILogger<LoginController> _logger;
+        private readonly ILoginService _loginService;
 
-        public LoginController(ILogger<LoginController> logger)
+        public LoginController(ILogger<LoginController> logger, ILoginService loginService)
         {
             _logger = logger;
+            _loginService = loginService;
         }
 
         [HttpPost(Name = "Login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
+            _loginService.Login(request);
             return Ok();
         }
     }

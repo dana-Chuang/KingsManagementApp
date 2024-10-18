@@ -1,7 +1,7 @@
 using DataLayer;
 using KingsManagementApp.Controllers;
 using KingsManagementApp.ExceptionHandlers;
-using KingsManagementApp.Services;
+using DataLayer.Interfaces;
 using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,8 +17,13 @@ builder.Services.AddExceptionHandler<SamePasswordAsOldExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
+//Services
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IUsersRepository,UsersRepository>();
+builder.Services.AddTransient<ILoginService, LoginService>();
+
+//Repositories
+builder.Services.AddTransient<IUsersRepository, UsersRepository>();
+builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 
 var app = builder.Build();
 

@@ -1,5 +1,5 @@
-﻿using DataLayer.Models;
-using KingsManagementApp.Services;
+﻿using DataLayer.Interfaces;
+using DataLayer.Models;
 
 namespace KingsManagementApp.Controllers
 {
