@@ -17,6 +17,12 @@ namespace KingsManagementApp.Controllers
             _usersRepository.AddAdmin(id, updatedBy);
         }
 
+        public void ChangeAdminStatus(int id, bool originalStatus, string updatedBy)
+        {
+            var newStatus = originalStatus? 0 : 1; //set 0 if original status is true (=1)
+            _usersRepository.ChangeAdminStatus(id, newStatus, updatedBy);
+        }
+
         public List<UsersModel> GetAllUsers()
         {
             return _usersRepository.GetAll();

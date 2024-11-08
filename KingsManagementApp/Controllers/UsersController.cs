@@ -58,5 +58,26 @@ namespace KingsManagementApp.Controllers
             }
         }
 
+
+        [HttpPost(Name = "ChangeAdminStatus")]
+        public IActionResult ChangeAdminStatus([FromBody] AdminStatusRequest request)
+        {
+            if (request == null || request.Id <= 0)
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            try
+            {
+                _userService.ChangeAdminStatus(request.Id, request.OriginalStatus, request.UpdatedBy);
+                return Ok(new { message = "Admin status changed successfully", userId = request.Id });
+            }
+            catch (Exception ex)
+            {
+                // Log the error as needed
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
     }
 }

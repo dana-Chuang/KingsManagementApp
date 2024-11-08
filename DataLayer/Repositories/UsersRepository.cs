@@ -52,4 +52,13 @@ public class UsersRepository : IUsersRepository
         parameters.Add("UpdatedBy", updatedBy);
         _connection.Query<UsersModel>("Usp_Users_AddAdmin", parameters, commandType: CommandType.StoredProcedure);
     }
+
+    public void ChangeAdminStatus(int id, int newStatus, string updatedBy)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("Id", id);
+        parameters.Add("UpdatedBy", updatedBy);
+        parameters.Add("NewStatus", newStatus);
+        _connection.Query<UsersModel>("Usp_Users_ChangeAdminStatus", parameters, commandType: CommandType.StoredProcedure);
+    }
 }

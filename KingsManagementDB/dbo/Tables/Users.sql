@@ -8,9 +8,10 @@
     [Status] INT NOT NULL, 
     [Email] VARCHAR(25) NOT NULL,
     [IsAdmin] INT NOT NULL,
+    [AdminStatus] INT NULL,
     [Password] VARCHAR(20) NULL,
     [CreatedOn] DATETIME NOT NULL, 
-    [CreatedBy] CHAR(25) NOT NULL, 
+    [CreatedBy] CHAR(25) NOT NULL,
     [UpdatedOn] DATETIME NULL, 
     [UpdatedBy] CHAR(25) NULL,
     PRIMARY KEY CLUSTERED

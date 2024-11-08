@@ -9,6 +9,7 @@ BEGIN
 		Status,
 		Email,
 		IsAdmin,
+		AdminStatus,
 		Password,
 		CreatedOn,
 		CreatedBy,
