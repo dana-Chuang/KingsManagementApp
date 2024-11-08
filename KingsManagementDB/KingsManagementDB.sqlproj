@@ -70,6 +70,7 @@
     <Build Include="dbo\StoredProcedures\Usp_Users_GetPasswordByEmail.sql" />
     <Build Include="dbo\StoredProcedures\Usp_Users_AddAdmin.sql" />
     <Build Include="dbo\StoredProcedures\Usp_Users_ChangeAdminStatus.sql" />
+    <Build Include="dbo\StoredProcedures\Usp_Users_GetLoginCredentials.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

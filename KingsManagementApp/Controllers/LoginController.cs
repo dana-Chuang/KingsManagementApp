@@ -20,17 +20,24 @@ namespace KingsManagementApp.Controllers
         [HttpPost(Name = "Login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
-            var isLoginValid = _loginService.Login(request);
-            if (isLoginValid)
+            var loginCredentials = _loginService.Login(request);
+            if (loginCredentials == null)
             {
-                _logger.LogInformation("Login successful for user: {Email}", request.Email);
-                return Ok();
+                return Unauthorized(); // Return 401 if credentials are invalid
             }
-            else
-            {
-                _logger.LogWarning("Login failed for user: {Email}", request.Email);
-                return BadRequest();
-            }
+
+            return Ok(loginCredentials); // Return 200 with LoginCredentials if valid
+            /*            if (isLoginValid)
+                        {
+                            _logger.LogInformation("Login successful for user: {Email}", request.Email);
+                            var response = new { loginName = "Dana" };
+                            return Ok(response);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Login failed for user: {Email}", request.Email);
+                            return BadRequest();
+                        }*/
         }
     }
 }

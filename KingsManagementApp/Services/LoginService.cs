@@ -15,16 +15,24 @@ namespace KingsManagementApp.Controllers
             _usersRepository = usersRepository;
         }
 
-        public Boolean Login(LoginRequest request)
+        public LoginCredentials Login(LoginRequest request)
         {
             var pwFromDB = _usersRepository.getPasswordBy(request.Email);
             if (pwFromDB == null)
             {
                 _logger.LogWarning("No password found for the email:" + request.Email);
-                //Debug.WriteLine("No password found for the email: " + request.Email);
-                return false;
+                throw new Exception("User not found.");
+
             }
-            return pwFromDB == request.Password;
+            if (pwFromDB == request.Password)
+            {
+                return _usersRepository.getLoginCredentials(request.Email);
+            }
+            else
+            {
+                throw new Exception("Incorrect Password");
+            }
+
         }
     }
 }

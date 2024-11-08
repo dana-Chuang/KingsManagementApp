@@ -41,8 +41,7 @@ public class UsersRepository : IUsersRepository
         parameters.Add("Id", id);
         parameters.Add("NewPassword", newPassword);
         parameters.Add("UpdatedBy", updatedBy);
-
-        _connection.Query<UsersModel>("Usp_Users_UpdatePassword", parameters, commandType: CommandType.StoredProcedure);
+        _connection.Execute("Usp_Users_UpdatePassword", parameters, commandType: CommandType.StoredProcedure);
     }
 
     public void AddAdmin(int id, string updatedBy)
@@ -50,7 +49,7 @@ public class UsersRepository : IUsersRepository
         var parameters = new DynamicParameters();
         parameters.Add("Id", id);
         parameters.Add("UpdatedBy", updatedBy);
-        _connection.Query<UsersModel>("Usp_Users_AddAdmin", parameters, commandType: CommandType.StoredProcedure);
+        _connection.Execute("Usp_Users_AddAdmin", parameters, commandType: CommandType.StoredProcedure);
     }
 
     public void ChangeAdminStatus(int id, int newStatus, string updatedBy)
@@ -59,6 +58,13 @@ public class UsersRepository : IUsersRepository
         parameters.Add("Id", id);
         parameters.Add("UpdatedBy", updatedBy);
         parameters.Add("NewStatus", newStatus);
-        _connection.Query<UsersModel>("Usp_Users_ChangeAdminStatus", parameters, commandType: CommandType.StoredProcedure);
+        _connection.Execute("Usp_Users_ChangeAdminStatus", parameters, commandType: CommandType.StoredProcedure);
+    }
+
+    public LoginCredentials getLoginCredentials(string email)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("Email", email);
+        return _connection.QuerySingleOrDefault<LoginCredentials>("Usp_Users_GetLoginCredentials",parameters,commandType: CommandType.StoredProcedure);
     }
 }

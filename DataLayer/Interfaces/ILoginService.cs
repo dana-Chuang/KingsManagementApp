@@ -4,6 +4,6 @@ namespace DataLayer.Interfaces
 {
     public interface ILoginService
     {
-        Boolean Login(LoginRequest request);
+        LoginCredentials Login(LoginRequest request);
     }
 }
