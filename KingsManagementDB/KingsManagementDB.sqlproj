@@ -68,6 +68,7 @@
     <Build Include="dbo\StoredProcedures\Usp_Users_UpdatePassword.sql" />
     <Build Include="dbo\StoredProcedures\Usp_Users_GetPasswordById.sql" />
     <Build Include="dbo\StoredProcedures\Usp_Users_GetPasswordByEmail.sql" />
+    <Build Include="dbo\StoredProcedures\Usp_Users_AddAdmin.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using DataLayer;
 using DataLayer.Models;
 using Microsoft.Extensions.Configuration;
 using System.Data;
@@ -44,5 +43,13 @@ public class UsersRepository : IUsersRepository
         parameters.Add("UpdatedBy", updatedBy);
 
         _connection.Query<UsersModel>("Usp_Users_UpdatePassword", parameters, commandType: CommandType.StoredProcedure);
+    }
+
+    public void AddAdmin(int id, string updatedBy)
+    {
+        var parameters = new DynamicParameters();
+        parameters.Add("Id", id);
+        parameters.Add("UpdatedBy", updatedBy);
+        _connection.Query<UsersModel>("Usp_Users_AddAdmin", parameters, commandType: CommandType.StoredProcedure);
     }
 }

@@ -38,5 +38,25 @@ namespace KingsManagementApp.Controllers
             return Ok();
         }
 
+        [HttpPost(Name = "AddAdmin")]
+        public IActionResult AddAdmin([FromBody] AdminRequest request)
+        {
+            if (request == null || request.Id <= 0)
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            try
+            {
+                _userService.AddAdmin(request.Id, request.UpdatedBy);
+                return Ok(new { message = "Admin added successfully", userId = request.Id });
+            }
+            catch (Exception ex)
+            {
+                // Log the error as needed
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
     }
 }

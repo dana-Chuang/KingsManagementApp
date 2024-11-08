@@ -12,6 +12,11 @@ namespace KingsManagementApp.Controllers
             _usersRepository = usersRepository;
         }
 
+        public void AddAdmin(int id, string updatedBy)
+        {
+            _usersRepository.AddAdmin(id, updatedBy);
+        }
+
         public List<UsersModel> GetAllUsers()
         {
             return _usersRepository.GetAll();
